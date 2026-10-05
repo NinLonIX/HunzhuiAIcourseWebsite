@@ -46,5 +46,6 @@ for (const title of [
 
 const faq = fs.readFileSync(path.join(root, "faq.html"), "utf8");
 for (const qq of ["1557871458", "705496011"]) assert.match(faq, new RegExp(qq));
+for (const text of ["成品策略需求及即将制作的内容", "和音奏者策略（成品）", "百战无畏策略（跟随课程进度11月前完成制作）", "离群使者策略（跟随课程进度12月前完成制作）", "冰系法师，电系法师，小骑士都需要二次共鸣"]) assert.match(faq, new RegExp(text));
 
 console.log("site structure checks passed");
