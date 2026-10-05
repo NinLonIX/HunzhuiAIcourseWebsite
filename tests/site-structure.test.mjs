@@ -23,4 +23,21 @@ for (const price of ["98", "148", "298"]) assert.match(pricing, new RegExp(`¥?$
 assert.match(pricing, /体验成品权限/);
 assert.match(pricing, /私人远程服务/);
 
+const course = fs.readFileSync(path.join(root, "course.html"), "utf8");
+assert.match(course, /公开版路线预览/);
+for (const title of [
+  "风险规避",
+  "逐步拆解游戏流程",
+  "算法练手：打孔策略",
+  "感知与状态建模",
+  "代码解耦与策略插件",
+  "状态机与工作流编排",
+  "动作执行与反馈确认",
+  "规划与资源管理",
+  "战斗策略与决策搜索",
+  "异常恢复与幂等控制",
+  "模拟器与测试方法",
+  "部署、监控与维护",
+]) assert.match(course, new RegExp(title));
+
 console.log("site structure checks passed");
