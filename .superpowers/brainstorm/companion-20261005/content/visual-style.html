@@ -1,0 +1,69 @@
+
+<h2>选择这门自动化课程的宣传气质</h2>
+<p class="subtitle">下面是同一套课程内容的三种首屏方向。请先看“第一眼感觉”，再点击你更偏好的方案。</p>
+
+<style>
+  .visual-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px}
+  .visual-card{border:1px solid rgba(255,255,255,.14);border-radius:18px;overflow:hidden;background:#111827;cursor:pointer;transition:.2s;min-width:0}
+  .visual-card:hover{transform:translateY(-4px);border-color:#79d7ff}
+  .visual-card.selected{outline:3px solid #79d7ff;box-shadow:0 0 0 5px rgba(121,215,255,.15)}
+  .visual-card .preview{height:255px;padding:20px;position:relative;overflow:hidden}
+  .visual-card h3{margin:0 0 8px;font-size:20px;color:#fff}
+  .visual-card p{margin:0;color:#bcc7d6;line-height:1.55;font-size:14px}
+  .card-copy{padding:16px 18px 18px;background:#141c2a}
+  .tag{display:inline-block;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.12);color:#d9f3ff;font-size:11px;margin-bottom:12px}
+  .a .preview{background:radial-gradient(circle at 80% 15%,#2676b5 0,#0b1726 46%,#07101b 100%)}
+  .a .glow{position:absolute;width:180px;height:180px;border-radius:50%;background:#5ed0ff;filter:blur(45px);opacity:.38;right:-30px;top:-50px}
+  .a .eyebrow{font-size:11px;color:#9fe5ff;letter-spacing:.15em;text-transform:uppercase}
+  .a .headline{font-size:30px;line-height:1.05;font-weight:800;max-width:210px;color:#fff;margin-top:13px}
+  .a .line{height:7px;border-radius:99px;background:#5ed0ff;margin-top:14px;width:75%}
+  .a .chips{display:flex;gap:6px;margin-top:38px}.a .chips span{font-size:10px;border:1px solid #4da4ca;border-radius:999px;padding:5px 7px;color:#dbf7ff}
+  .b .preview{background:#f3eee5;color:#1d1d1b}.b .paper{background:#fffdf7;border:1px solid #d8cfc0;border-radius:12px;padding:18px;transform:rotate(-2deg);box-shadow:7px 9px 0 #d5c8b7}
+  .b .eyebrow{font-size:10px;letter-spacing:.14em;color:#8c7454}.b .headline{font-family:Georgia,serif;font-size:28px;line-height:1.08;font-weight:700;margin-top:10px}.b .stamp{position:absolute;right:18px;top:18px;border:2px solid #bf5f39;color:#bf5f39;border-radius:50%;width:54px;height:54px;display:grid;place-items:center;font-size:10px;transform:rotate(12deg)}
+  .b .rule{height:1px;background:#d8cfc0;margin:17px 0}.b .mini{font-size:11px;color:#6f655b;line-height:1.5}
+  .c .preview{background:#0a0e12}.c .terminal{border:1px solid #2f3944;border-radius:12px;background:#10161d;padding:15px;box-shadow:0 18px 45px rgba(0,0,0,.35)}
+  .c .dots{display:flex;gap:5px;margin-bottom:14px}.c .dots i{width:7px;height:7px;border-radius:50%;background:#f06b68}.c .dots i:nth-child(2){background:#e4c45b}.c .dots i:nth-child(3){background:#6bcf8d}
+  .c .prompt{color:#91f2c3;font-family:monospace;font-size:11px;line-height:1.7}.c .prompt strong{color:#83d8ff}.c .big{font-size:25px;line-height:1.05;color:#f2f5f7;font-weight:800;margin:15px 0 10px}.c .cursor{display:inline-block;width:8px;height:20px;background:#91f2c3;vertical-align:-3px;animation:blink 1s infinite}@keyframes blink{50%{opacity:.2}}
+  @media(max-width:900px){.visual-grid{grid-template-columns:1fr}.visual-card .preview{height:220px}}
+</style>
+
+<div class="visual-grid">
+  <div class="visual-card a" data-choice="a" onclick="toggleSelect(this)">
+    <div class="preview">
+      <div class="glow"></div>
+      <div class="eyebrow">AUTOMATION COURSE · 01</div>
+      <div class="headline">把重复工作，变成会自己运行的系统</div>
+      <div class="line"></div>
+      <div class="chips"><span>从零开始</span><span>真实项目</span><span>可交付</span></div>
+    </div>
+    <div class="card-copy"><span class="tag">A · 深色科技</span><h3>系统感、效率感</h3><p>适合强调“做出系统”“自动运行”“效率提升”，第一眼更像高价值实战课程。</p></div>
+  </div>
+
+  <div class="visual-card b" data-choice="b" onclick="toggleSelect(this)">
+    <div class="preview">
+      <div class="paper">
+        <div class="eyebrow">一套方法，做出自己的自动化方案</div>
+        <div class="headline">从想法到成果，按步骤完成一次真正的交付</div>
+        <div class="rule"></div><div class="mini">课程大纲 / 准备清单 / 方案权益 / 成果案例</div>
+      </div>
+      <div class="stamp">实战<br>课程</div>
+    </div>
+    <div class="card-copy"><span class="tag">B · 编辑部暖白</span><h3>可信、清楚、耐读</h3><p>适合把价格、大纲、准备条件和权益讲得很透明，像一份精心整理的课程说明书。</p></div>
+  </div>
+
+  <div class="visual-card c" data-choice="c" onclick="toggleSelect(this)">
+    <div class="preview">
+      <div class="terminal">
+        <div class="dots"><i></i><i></i><i></i></div>
+        <div class="prompt">$ course.init()<br><strong>→ loading your workflow...</strong></div>
+        <div class="big">学完，交付一套能跑起来的自动化系统<span class="cursor"></span></div>
+        <div class="prompt">$ next_step = "了解课程与权益"</div>
+      </div>
+    </div>
+    <div class="card-copy"><span class="tag">C · 工具箱终端</span><h3>动手、直接、有记忆点</h3><p>适合把课程做成“跟着操作就能完成”的体验，技术感更强，适合年轻用户。</p></div>
+  </div>
+</div>
+
+<div class="section" style="margin-top:22px">
+  <p class="subtitle">你可以先点选一个，也可以直接告诉我“更喜欢 A，但想要 B 的清楚感”。</p>
+</div>
