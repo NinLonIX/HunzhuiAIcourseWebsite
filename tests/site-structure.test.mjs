@@ -15,8 +15,11 @@ assert.match(index, /automation\.html/);
 assert.match(index, /pricing\.html/);
 
 const automation = fs.readFileSync(path.join(root, "automation.html"), "utf8");
-assert.match(automation, /内容整理中|页面占位/);
+assert.match(automation, /自动化卡片演示|内容整理中|页面占位/);
 assert.match(automation, /index\.html/);
+assert.match(automation, /automation-demo\.html/);
+assert.equal(fs.existsSync(path.join(root, "automation-demo.html")), true, "automation demo should be copied into dist");
+assert.equal(fs.existsSync(path.join(root, "assets", "01-主界面.png")), true, "automation demo assets should be copied into dist");
 
 const pricing = fs.readFileSync(path.join(root, "pricing.html"), "utf8");
 for (const price of ["98", "148", "298"]) assert.match(pricing, new RegExp(`¥?${price}`));
