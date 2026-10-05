@@ -30,23 +30,23 @@
 - Produces a standalone HTML document that opens from `file:///` and exposes no external application API.
 - Internal data shape: `{id, index, title, subtitle, tone, summary, bullets[], highlight, mini}` for each of 8 cards.
 
-- [ ] **Step 1: Add the document shell and content model**
+- [x] **Step 1: Add the document shell and content model**
 
 Create the HTML skeleton with a title, a top index bar, a narrative sidebar, a stage container, and a footer hint. Define the eight card objects in one JavaScript array using the exact order and screenshot-grounded copy from the spec.
 
-- [ ] **Step 2: Add the visual system and responsive layout**
+- [x] **Step 2: Add the visual system and responsive layout**
 
 Write inline CSS for the dark terminal palette, glass panels, card sizing, stage perspective, active/inactive card states, index buttons, focus rings, and a media query that turns the stage into a single-card layout below 900px.
 
-- [ ] **Step 3: Render card summaries and mini console previews**
+- [x] **Step 3: Render card summaries and mini console previews**
 
 Implement `renderCards()` and `renderMini(card)` so each card shows a recognizable CSS-only preview: log rows for the main page, status blocks for automation detail, metric/table rows for statistics, nodes/edges for the map, inventory rows for gems, loot list for talisman search, filter/table controls for recycle, and socket comparison for drilling.
 
-- [ ] **Step 4: Implement navigation and active-state animation**
+- [x] **Step 4: Implement navigation and active-state animation**
 
 Implement `setActive(index, announce = true)` and bind it to arrow keys, wheel events, card clicks, and index buttons. Update the sidebar title, summary, bullets, progress counter, active card class, and highlight width. Respect `prefers-reduced-motion` by shortening transitions.
 
-- [ ] **Step 5: Commit the page implementation**
+- [x] **Step 5: Commit the page implementation**
 
 Run `git add outputs/魂坠自动化卡片演示.html` and commit with `feat: add hunzhui card theater presentation`.
 
@@ -58,19 +58,18 @@ Run `git add outputs/魂坠自动化卡片演示.html` and commit with `feat: ad
 **Interfaces:**
 - Browser validation exercises the rendered DOM and navigation behavior without modifying the page.
 
-- [ ] **Step 1: Run static checks**
+- [x] **Step 1: Run static checks**
 
 Use PowerShell to confirm the file exists, count exactly 8 card data entries, and verify the page contains the four navigation bindings (`keydown`, `wheel`, card click, index click) plus the eight required Chinese titles.
 
-- [ ] **Step 2: Open the file in a browser preview**
+- [x] **Step 2: Open the file in a browser preview**
 
 Serve the project with a local static server and open the output in the browser. Check that the first card renders, the sidebar has matching copy, and the page has no horizontal scrollbar at desktop width.
 
-- [ ] **Step 3: Exercise interaction states**
+- [x] **Step 3: Exercise interaction states**
 
 Click the third index, press `ArrowRight`, scroll the stage, and click a neighboring card. Confirm the progress counter and sidebar content update each time, and inspect a narrow viewport to confirm the single-card layout.
 
-- [ ] **Step 4: Commit validation notes if needed**
+- [x] **Step 4: Commit validation notes if needed**
 
 If validation finds an issue, fix the HTML and amend with a focused commit; otherwise keep the implementation commit as the final code change.
-
