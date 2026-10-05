@@ -22,6 +22,7 @@ const pricing = fs.readFileSync(path.join(root, "pricing.html"), "utf8");
 for (const price of ["98", "148", "298"]) assert.match(pricing, new RegExp(`¥?${price}`));
 assert.match(pricing, /体验成品权限/);
 assert.match(pricing, /私人远程服务/);
+for (const qq of ["1557871458", "705496011"]) assert.match(pricing, new RegExp(qq));
 
 const course = fs.readFileSync(path.join(root, "course.html"), "utf8");
 assert.match(course, /公开版路线预览/);
@@ -39,5 +40,8 @@ for (const title of [
   "模拟器与测试方法",
   "部署、监控与维护",
 ]) assert.match(course, new RegExp(title));
+
+const faq = fs.readFileSync(path.join(root, "faq.html"), "utf8");
+for (const qq of ["1557871458", "705496011"]) assert.match(faq, new RegExp(qq));
 
 console.log("site structure checks passed");
