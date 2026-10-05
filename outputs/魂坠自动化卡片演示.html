@@ -30,8 +30,13 @@
     .story-panel{border:1px solid #2b405a;border-radius:16px;background:linear-gradient(180deg,rgba(16,27,41,.94),rgba(9,14,22,.96));padding:24px 22px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow);position:relative;overflow:hidden}
     .story-panel:after{content:"";position:absolute;inset:auto -40% -38% 15%;height:230px;background:radial-gradient(circle,rgba(66,225,161,.15),transparent 68%);pointer-events:none}
     .eyebrow{color:var(--green);font:11px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.16em;text-transform:uppercase}
-    .story-panel h2{font-size:32px;line-height:1.13;margin:12px 0 10px;letter-spacing:-.02em}
+    .story-title-row{display:grid;grid-template-columns:minmax(0,1fr) 92px;gap:12px;align-items:start;margin:12px 0 10px}
+    .story-panel h2{font-size:32px;line-height:1.13;margin:0;letter-spacing:-.02em}
     .story-panel h2 span{color:var(--blue)}
+    .preview-trigger{display:block;border:1px solid #35516e;border-radius:10px;background:#0d1723;padding:5px;cursor:pointer;text-align:left;transition:transform .25s var(--ease),border-color .25s ease,box-shadow .25s ease}
+    .preview-trigger:hover,.preview-trigger:focus-visible{border-color:var(--blue);box-shadow:0 0 0 3px rgba(114,183,255,.14);transform:translateY(-2px);outline:none}
+    .preview-trigger img{display:block;width:100%;height:58px;object-fit:cover;object-position:center;border-radius:6px;border:1px solid #253b54;background:#07101a}
+    .preview-trigger span{display:block;margin-top:5px;color:#86a5c6;font:9px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.06em;text-transform:uppercase;text-align:center}
     .story-summary{color:#c7d3e2;line-height:1.75;font-size:14px;min-height:112px;transition:opacity .18s ease,transform .18s ease}
     .story-summary.fade{opacity:0;transform:translateY(6px)}
     .story-divider{height:1px;background:linear-gradient(90deg,#314863,transparent);margin:17px 0}
@@ -78,10 +83,17 @@
     .card-bottom{display:flex;align-items:end;justify-content:space-between;gap:10px;margin-top:14px}.card-description{font-size:12px;line-height:1.5;color:#aabbd0;max-width:70%}.highlight{display:inline-block;position:relative;color:#f4f8ff;font:12px ui-monospace,SFMono-Regular,Consolas,monospace;padding:2px 5px;z-index:0}.highlight:before{content:"";position:absolute;z-index:-1;left:0;right:0;bottom:1px;height:7px;border-radius:3px;background:color-mix(in srgb,var(--tone) 52%,transparent);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease) .18s}.is-active .highlight:before{transform:scaleX(1)}
     .side-index{font:11px ui-monospace,SFMono-Regular,Consolas,monospace;color:#8296ad}
     .stage-foot{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;border-top:1px solid #24374f;color:#8298b0;font-size:11px;position:relative;z-index:2}.stage-foot strong{color:#c9d8e8;font-weight:500}.stage-foot .key{border:1px solid #2f4661;background:#101a28;border-radius:6px;padding:4px 7px;color:#a9bed3;margin:0 2px}
+    .image-lightbox{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:24px;background:rgba(3,7,12,.84);backdrop-filter:blur(12px);opacity:0;pointer-events:none;transition:opacity .25s ease}
+    .image-lightbox.is-open{opacity:1;pointer-events:auto}
+    .lightbox-card{width:min(1100px,92vw);max-height:92vh;border:1px solid #45698d;border-radius:18px;background:#0b131e;box-shadow:0 36px 100px rgba(0,0,0,.65);padding:12px;position:relative;transform:translateY(10px) scale(.98);transition:transform .25s var(--ease)}
+    .image-lightbox.is-open .lightbox-card{transform:translateY(0) scale(1)}
+    .lightbox-card img{display:block;width:100%;max-height:calc(92vh - 76px);object-fit:contain;border-radius:10px;background:#050a10}
+    .lightbox-label{display:flex;justify-content:space-between;align-items:center;padding:9px 3px 2px;color:#a8bed4;font-size:12px}.lightbox-label strong{color:#eff6ff;font-size:15px}
+    .lightbox-close{position:absolute;right:18px;top:18px;width:32px;height:32px;border:1px solid #557493;border-radius:50%;background:rgba(7,13,21,.85);color:#fff;font-size:18px;line-height:1;cursor:pointer}.lightbox-close:hover,.lightbox-close:focus-visible{border-color:#fff;outline:none}
     @media (prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
     @media (max-width:1100px){.app-shell{padding:14px}.workspace{grid-template-columns:250px 1fr}.theater-card{width:min(390px,50vw)}}
     @media (max-width:900px){.app-shell{padding:10px;gap:10px}.topbar{align-items:flex-start;flex-direction:column}.brand{min-width:0}.index-nav{justify-content:flex-start}.workspace{display:flex;flex-direction:column}.story-panel{min-height:260px;padding:18px}.story-summary{min-height:0}.story-footer{margin-top:14px}.stage{min-height:580px}.theater-card{width:min(420px,78vw);height:465px}.stage-head{padding:12px 14px}.stage-foot{padding:10px 14px}.kbd-hint{display:none}}
-    @media (max-width:560px){.brand h1{font-size:17px}.index-btn{min-width:45px;padding:7px 8px;font-size:11px}.story-panel h2{font-size:26px}.stage{min-height:520px}.theater-card{width:calc(100vw - 48px);height:425px}.card-surface{padding:16px}.card-surface h3{font-size:23px}.mini{margin-top:12px}.card-description{font-size:11px}}
+    @media (max-width:560px){.brand h1{font-size:17px}.index-btn{min-width:45px;padding:7px 8px;font-size:11px}.story-title-row{grid-template-columns:minmax(0,1fr) 82px}.story-panel h2{font-size:26px}.preview-trigger img{height:52px}.stage{min-height:520px}.theater-card{width:calc(100vw - 48px);height:425px}.card-surface{padding:16px}.card-surface h3{font-size:23px}.mini{margin-top:12px}.card-description{font-size:11px}}
   </style>
 </head>
 <body>
@@ -98,7 +110,10 @@
       <aside class="story-panel" aria-live="polite">
         <div>
           <div class="eyebrow" id="storyEyebrow">01 / OVERVIEW</div>
-          <h2 id="storyTitle">主界面<br><span>运行总览</span></h2>
+          <div class="story-title-row">
+            <h2 id="storyTitle">主界面<br><span>运行总览</span></h2>
+            <button class="preview-trigger" id="previewTrigger" type="button" aria-label="打开主界面的实际图片预览"><img id="previewThumb" src="assets/01-主界面.png" alt="主界面实际图片预览"><span>实际图片预览</span></button>
+          </div>
           <div class="story-divider"></div>
           <p class="story-summary" id="storySummary"></p>
           <ul class="story-list" id="storyList"></ul>
@@ -118,16 +133,24 @@
     </main>
   </div>
 
+  <div class="image-lightbox" id="imageLightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
+    <div class="lightbox-card">
+      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="关闭图片预览">×</button>
+      <img id="lightboxImage" src="assets/01-主界面.png" alt="主界面实际图片">
+      <div class="lightbox-label"><strong id="lightboxTitle">主界面 · 实际图片</strong><span>点击外部或按 Esc 关闭</span></div>
+    </div>
+  </div>
+
   <script>
     const cards = [
-      {id:'main', index:'01', tone:'#42e1a1', label:'OVERVIEW', title:'主界面', subtitle:'运行总览 / 精确日志', summary:'把连接、挂机策略、房间预测和运行日志放在同一屏，方便快速判断当前是否稳定运行。', bullets:['保垒只读连接状态清晰可见','策略、章节与门禁条件同步显示','逐行日志保留重连与恢复过程'], highlight:'已连接 · 保垒只读', mini:'main'},
-      {id:'detail', index:'02', tone:'#72b7ff', label:'AUTOMATION', title:'自动化详情', subtitle:'状态面板 / 配置入口', summary:'用一段简明状态链说明自动化目前停在哪个阶段，启动、入口和配置是否准备就绪一目了然。', bullets:['自动化开关与当前策略同屏','阶段、回合和启动状态可追踪','入口 mainUIPanel 与配置项可对照'], highlight:'启动：等待', mini:'detail'},
-      {id:'stats', index:'03', tone:'#f5c86a', label:'STATISTICS', title:'挂机统计', subtitle:'局局收录 / 稳定记录', summary:'每局结束自动落库，既能看策略汇总，也能下钻到单局的时间、宝石、进度和 gameGuid。', bullets:['总时长、胜率与策略重开集中汇总','逐局记录保留结算时间与结束原因','统计数据方便复盘长期稳定性'], highlight:'4841 胜 · 559 负 · 89.6%', mini:'stats'},
-      {id:'map', index:'04', tone:'#c89bff', label:'MAP VIEW', title:'完整地图', subtitle:'终端实时查看对局策略详情', summary:'把游戏内的分支路线展开成可读地图，实时标记当前位置、自动路线和关键目标。', bullets:['节点与分支顺序完整展示','绿色边框标记当前位置','蓝色路径呈现当前自动路线'], highlight:'起点 → 战斗 → 深入', mini:'map'},
-      {id:'gems', index:'05', tone:'#72b7ff', label:'GEM FORGE', title:'宝石合成', subtitle:'稳定高效管理宝石', summary:'按等级统一管理投入、保留数和可消耗数量，批量合成时减少重复点击，同时保留统计依据。', bullets:['Lv.2—Lv.6 参与等级可勾选','每类宝石独立设置保留数','累计成功率与产出分布可复盘'], highlight:'选择等级 · 设置保留数 · 批次', mini:'gems'},
-      {id:'search', index:'06', tone:'#c89bff', label:'TALISMAN SEARCH', title:'护符探寻', subtitle:'自动探寻 / 清晰记录', summary:'自动完成重复探寻，把抽取消耗、剩余材料和获得护符按批次收录，减少枯燥操作。', bullets:['可先预览可抽次数与预计消耗','获得清单按职业、品质、数量记录','支持跳过卡动画与最低余额保护'], highlight:'预览：10 连×98 → 单抽×5', mini:'search'},
-      {id:'recycle', index:'07', tone:'#ff7f8f', label:'TALISMAN RECYCLE', title:'护符分解', subtitle:'批量分解 / 多重保险', summary:'先筛选，再锁定，最后批量确认可分解项；程序把“不会误拆”变成可见的操作步骤。', bullets:['职业与品质筛选先收窄范围','橙色护符默认保留','预计返还在执行前可核对'], highlight:'保留橙色 · 锁定 · 批量确认', mini:'recycle'},
-      {id:'drill', index:'08', tone:'#42e1a1', label:'SOCKET PLANNER', title:'护符打孔', subtitle:'最优算法 / 自选孔形', summary:'材料准备好后，程序比较当前孔位与候选孔形，给出更稳的装配建议，减少试错。', bullets:['当前护符与材料余额实时对照','绿色表示已匹配的宝石槽位','推荐结果可在执行前预览'], highlight:'最优放置 · 新孔形 · 预览', mini:'drill'}
+      {id:'main', index:'01', tone:'#42e1a1', label:'OVERVIEW', title:'主界面', subtitle:'运行总览 / 精确日志', image:'assets/01-主界面.png', summary:'把连接、挂机策略、房间预测和运行日志放在同一屏，方便快速判断当前是否稳定运行。', bullets:['保垒只读连接状态清晰可见','策略、章节与门禁条件同步显示','逐行日志保留重连与恢复过程'], highlight:'已连接 · 保垒只读', mini:'main'},
+      {id:'detail', index:'02', tone:'#72b7ff', label:'AUTOMATION', title:'自动化详情', subtitle:'状态面板 / 配置入口', image:'assets/02-自动化详情.png', summary:'用一段简明状态链说明自动化目前停在哪个阶段，启动、入口和配置是否准备就绪一目了然。', bullets:['自动化开关与当前策略同屏','阶段、回合和启动状态可追踪','入口 mainUIPanel 与配置项可对照'], highlight:'启动：等待', mini:'detail'},
+      {id:'stats', index:'03', tone:'#f5c86a', label:'STATISTICS', title:'挂机统计', subtitle:'局局收录 / 稳定记录', image:'assets/03-挂机统计.png', summary:'每局结束自动落库，既能看策略汇总，也能下钻到单局的时间、宝石、进度和 gameGuid。', bullets:['总时长、胜率与策略重开集中汇总','逐局记录保留结算时间与结束原因','统计数据方便复盘长期稳定性'], highlight:'4841 胜 · 559 负 · 89.6%', mini:'stats'},
+      {id:'map', index:'04', tone:'#c89bff', label:'MAP VIEW', title:'完整地图', subtitle:'终端实时查看对局策略详情', image:'assets/04-完整地图.png', summary:'把游戏内的分支路线展开成可读地图，实时标记当前位置、自动路线和关键目标。', bullets:['节点与分支顺序完整展示','绿色边框标记当前位置','蓝色路径呈现当前自动路线'], highlight:'起点 → 战斗 → 深入', mini:'map'},
+      {id:'gems', index:'05', tone:'#72b7ff', label:'GEM FORGE', title:'宝石合成', subtitle:'稳定高效管理宝石', image:'assets/05-宝石合成.png', summary:'按等级统一管理投入、保留数和可消耗数量，批量合成时减少重复点击，同时保留统计依据。', bullets:['Lv.2—Lv.6 参与等级可勾选','每类宝石独立设置保留数','累计成功率与产出分布可复盘'], highlight:'选择等级 · 设置保留数 · 批次', mini:'gems'},
+      {id:'search', index:'06', tone:'#c89bff', label:'TALISMAN SEARCH', title:'护符探寻', subtitle:'自动探寻 / 清晰记录', image:'assets/06-护符探寻.png', summary:'自动完成重复探寻，把抽取消耗、剩余材料和获得护符按批次收录，减少枯燥操作。', bullets:['可先预览可抽次数与预计消耗','获得清单按职业、品质、数量记录','支持跳过卡动画与最低余额保护'], highlight:'预览：10 连×98 → 单抽×5', mini:'search'},
+      {id:'recycle', index:'07', tone:'#ff7f8f', label:'TALISMAN RECYCLE', title:'护符分解', subtitle:'批量分解 / 多重保险', image:'assets/07-护符分解.png', summary:'先筛选，再锁定，最后批量确认可分解项；程序把“不会误拆”变成可见的操作步骤。', bullets:['职业与品质筛选先收窄范围','橙色护符默认保留','预计返还在执行前可核对'], highlight:'保留橙色 · 锁定 · 批量确认', mini:'recycle'},
+      {id:'drill', index:'08', tone:'#42e1a1', label:'SOCKET PLANNER', title:'护符打孔', subtitle:'最优算法 / 自选孔形', image:'assets/08-护符打孔.png', summary:'材料准备好后，程序比较当前孔位与候选孔形，给出更稳的装配建议，减少试错。', bullets:['当前护符与材料余额实时对照','绿色表示已匹配的宝石槽位','推荐结果可在执行前预览'], highlight:'最优放置 · 新孔形 · 预览', mini:'drill'}
     ];
 
     const track = document.getElementById('track');
@@ -155,14 +178,24 @@
 
     function updateStory(card){
       const panel=document.querySelector('.story-panel');panel.classList.add('fade');
-      setTimeout(()=>{document.getElementById('storyEyebrow').textContent=`${card.index} / ${card.label}`;document.getElementById('storyTitle').innerHTML=`${card.title}<br><span>${card.subtitle.split(' / ')[0]}</span>`;document.getElementById('storySummary').textContent=card.summary;document.getElementById('storyList').innerHTML=card.bullets.map(b=>`<li>${b}</li>`).join('');document.getElementById('storyProgress').textContent=card.index;document.getElementById('stageFocus').textContent=card.title;panel.classList.remove('fade')},120);
+      setTimeout(()=>{document.getElementById('storyEyebrow').textContent=`${card.index} / ${card.label}`;document.getElementById('storyTitle').innerHTML=`${card.title}<br><span>${card.subtitle.split(' / ')[0]}</span>`;document.getElementById('storySummary').textContent=card.summary;document.getElementById('storyList').innerHTML=card.bullets.map(b=>`<li>${b}</li>`).join('');document.getElementById('storyProgress').textContent=card.index;document.getElementById('stageFocus').textContent=card.title;const thumb=document.getElementById('previewThumb');thumb.src=card.image;thumb.alt=`${card.title}实际图片预览`;document.getElementById('previewTrigger').setAttribute('aria-label',`打开${card.title}的实际图片预览`);panel.classList.remove('fade')},120);
     }
+
+    const previewTrigger=document.getElementById('previewTrigger');
+    const lightbox=document.getElementById('imageLightbox');
+    const lightboxImage=document.getElementById('lightboxImage');
+    const lightboxTitle=document.getElementById('lightboxTitle');
+    function openPreview(){const card=cards[active];lightboxImage.src=card.image;lightboxImage.alt=`${card.title}实际图片`;lightboxTitle.textContent=`${card.title} · 实际图片`;lightbox.classList.add('is-open');document.getElementById('lightboxClose').focus()}
+    function closePreview(){lightbox.classList.remove('is-open');previewTrigger.focus()}
+    previewTrigger.addEventListener('click',openPreview);
+    document.getElementById('lightboxClose').addEventListener('click',closePreview);
+    lightbox.addEventListener('click',e=>{if(e.target===lightbox)closePreview()});
 
     function setActive(next,announce=true){
       active=(next+cards.length)%cards.length;
       [...track.children].forEach((el,i)=>{const d=i-active;const abs=Math.abs(d);const x=d*230;const y=abs?16+abs*5:0;const z=100-abs;const rot=d* -28;const scale=abs===0?1:Math.max(.67,1-abs*.12);el.style.transform=`translate(-50%,-50%) translate3d(${x}px,${y}px,${-abs*130}px) rotateY(${rot}deg) scale(${scale})`;el.style.opacity=abs>3?'0':String(Math.max(.16,1-abs*.22));el.style.filter=abs===0?'none':`blur(${Math.min(abs*1.5,4)}px) saturate(${Math.max(.45,1-abs*.14)})`;el.style.zIndex=z;el.classList.toggle('is-active',i===active);el.setAttribute('aria-current',i===active?'true':'false')});[...indexNav.children].forEach((b,i)=>b.classList.toggle('is-active',i===active));updateStory(cards[active]);if(announce) history.replaceState(null,'',`#${cards[active].id}`)}
 
-    document.addEventListener('keydown',e=>{if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName))return;if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();setActive(active+1)}else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();setActive(active-1)}else if(e.key==='Home'){e.preventDefault();setActive(0)}else if(e.key==='End'){e.preventDefault();setActive(cards.length-1)}});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&lightbox.classList.contains('is-open')){e.preventDefault();closePreview();return}if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName))return;if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();setActive(active+1)}else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();setActive(active-1)}else if(e.key==='Home'){e.preventDefault();setActive(0)}else if(e.key==='End'){e.preventDefault();setActive(cards.length-1)}});
     document.getElementById('theater').addEventListener('wheel',e=>{if(Math.abs(e.deltaY)<18||wheelLock)return;e.preventDefault();wheelLock=true;setActive(active+(e.deltaY>0?1:-1));setTimeout(()=>wheelLock=false,520)},{passive:false});
     renderCards();renderIndex();
     const initialId=location.hash.slice(1);const initialIndex=cards.findIndex(c=>c.id===initialId);setActive(initialIndex>=0?initialIndex:0,false);
